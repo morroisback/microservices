@@ -15,9 +15,9 @@
                 "--reload"
             ],
             "console": "integratedTerminal",
-            "python": "${workspaceFolder}/.venv/bin/python",
-            "cwd": "${workspaceFolder}",
-            "envFile": "${workspaceFolder}/.env/dev.env",
+            "python": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/cast_service/.venv/bin/python",
+            "cwd": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/cast_service",
+            "envFile": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/cast_service/.env/dev.env",
             "env": {
                 "DB_HOST": "localhost",
                 "DB_PORT": "5433"
@@ -39,7 +39,7 @@
             },
             "pathMappings": [
                 {
-                    "localRoot": "${workspaceFolder}",
+                    "localRoot": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/cast_service",
                     "remoteRoot": "/app/"
                 }
             ],

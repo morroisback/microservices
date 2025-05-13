@@ -1,0 +1,26 @@
+{
+    "folders": [
+        {
+            "path": "../cast_service",
+            "name": "cast_service"
+        },
+        {
+            "path": "../movie_service",
+            "name": "movie_service"
+        },
+        {
+            "path": "..",
+            "name": "microservices"
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/.DS_Store": true
+        },
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "ruff.lineLength": 120
+    }
+}

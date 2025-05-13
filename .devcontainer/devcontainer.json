@@ -1,0 +1,47 @@
+{
+    "name": "microservices",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "movie_service",
+    "workspaceFolder": "/app",
+    // "build": {
+    //     "dockerfile": "Dockerfile",
+    //     "context": ".."
+    // },
+    "remoteUser": "root",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "njpwerner.autodocstring",
+                "ms-python.black-formatter",
+                "formulahendry.code-runner",
+                "streetsidesoftware.code-spell-checker",
+                "ms-vscode-remote.remote-containers",
+                "batisteo.vscode-django",
+                "ms-azuretools.vscode-docker",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "VisualStudioExptTeam.intellicode-api-usage-examples",
+                "wholroyd.jinja",
+                "ms-python.vscode-pylance",
+                "ms-python.python",
+                "ms-python.debugpy",
+                "donjayamanne.python-environment-manager",
+                "donjayamanne.python-extension-pack",
+                "KevinRose.vsc-python-indent",
+                "humao.rest-client",
+                "streetsidesoftware.code-spell-checker-russian",
+                "adpyke.vscode-sql-formatter",
+                "mtxr.sqltools",
+                "ultram4rine.sqltools-clickhouse-driver",
+                "rangav.vscode-thunder-client",
+                "DotJoshJohnson.xml",
+                "redhat.vscode-yaml"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.linting.enabled": true,
+                "sql-formatter.uppercase": true,
+                "python.linting.flake8Enabled": true
+            }
+        }
+    }
+}
