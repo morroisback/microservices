@@ -13,7 +13,7 @@ services:
     ports:
       - 7002:7000
       - 8082:8000
-      # - 8080:80
+      - 8080:80
     volumes:
       - ./movie_service/:/app/
     healthcheck:

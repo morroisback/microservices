@@ -1,16 +1,16 @@
 {
     "folders": [
         {
+            "path": "..",
+            "name": "microservices"
+        },
+        {
             "path": "../cast_service",
             "name": "cast_service"
         },
         {
             "path": "../movie_service",
             "name": "movie_service"
-        },
-        {
-            "path": "..",
-            "name": "microservices"
         }
     ],
     "settings": {
