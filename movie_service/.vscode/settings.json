@@ -1,7 +1,0 @@
-{
-    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-    "python.envFile": "${workspaceFolder}/python_microservices/movie_service/.env/dev.env",
-    "python.analysis.extraPaths": [
-        "${workspaceFolder}/python_microservices/movie_service",
-    ],
-}

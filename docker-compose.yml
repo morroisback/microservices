@@ -9,30 +9,32 @@ services:
     command: /app/start_service.sh
     # command: uvicorn app.main:app --reload --host 0.0.0.0 --port 80
     env_file:
-      - movie_service/.env/dev.env
+      - movie_service/.env/prod.env
     ports:
       - 8080:8000
       - 8082:80
     volumes:
       - ./movie_service/:/app/
     healthcheck:
-      test: ["CMD-SHELL", "/app/healthcheck_api.sh"]
+      test: ["CMD-SHELL", "healthcheck_api.sh"]
       interval: 10s
       timeout: 5s
       retries: 5
     depends_on:
-      movie_db: 
+      movie_db_service: 
         condition: service_healthy
       cast_service:
         condition: service_healthy
     networks:
       - microservices_network
       
-  movie_db:
+  movie_db_service:
     container_name: movie_db
     image: postgres:17.5-alpine
     env_file:
-      - ./movie_service/.env/dev.env
+      - ./movie_service/.env/prod.env
+    ports:
+      - 5434:5432
     volumes:
       - movie_pgdata:/var/lib/postgresql/data/
       - ./movie_service/healthcheck_db.sh:/healthcheck_db.sh:ro
@@ -51,27 +53,29 @@ services:
       dockerfile: Dockerfile
     command: /app/start_service.sh
     env_file:
-      - ./cast_service/.env/dev.env
+      - ./cast_service/.env/prod.env
     ports:
       - 8081:8000
     volumes:
       - ./cast_service/:/app/
     healthcheck:
-      test: ["CMD-SHELL", "/app/healthcheck_api.sh"]
+      test: ["CMD-SHELL", "healthcheck_api.sh"]
       interval: 10s
       timeout: 5s
       retries: 5
     depends_on:
-      cast_db: 
+      cast_db_service: 
         condition: service_healthy
     networks:
       - microservices_network
 
-  cast_db:
+  cast_db_service:
     container_name: cast_db
     image: postgres:17.5-alpine
     env_file:
-      - ./cast_service/.env/dev.env
+      - ./cast_service/.env/prod.env
+    ports:
+      - 5433:5432
     volumes:
       - cast_pgdata:/var/lib/postgresql/data/
       - ./cast_service/healthcheck_db.sh:/healthcheck_db.sh:ro

@@ -5,44 +5,47 @@
             "name": "movie service - dev",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "python": "${workspaceFolder}/.venv/bin/python",
-            "cwd": "${workspaceFolder}/python_microservices/movie_service/",
-            "envFile": "${workspaceFolder}/python_microservices/movie_service/.env/dev.env",
-            "jinja": true,
-            "justMyCode": true,
-            "presentation": {
-                "hidden": false,
-                "group": "api",
-                "order": 3
-            },
-            "autoReload": {
-                "enable": true
-            }
-        },
-        {
-            "name": "FastAPI - movie",
-            "type": "debugpy",
-            "request": "launch",
             "module": "uvicorn",
-            "console": "integratedTerminal",
-            "python": "${workspaceFolder}/.venv/bin/python",
-            "cwd": "${workspaceFolder}/python_microservices/movie_service/",
-            "envFile": "${workspaceFolder}/python_microservices/movie_service/.env/prod.env",
             "args": [
                 "app.main:app",
                 "--host",
-                "0.0.0.0",
+                "${API_HOST}",
                 "--port",
-                "80"
+                "${API_PORT}",
+                "--reload"
             ],
-            "jinja": true,
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}",
+            "envFile": "${workspaceFolder}/.env/dev.env",
             "justMyCode": true,
             "presentation": {
                 "hidden": false,
-                "group": "api",
-                "order": 4
+                "group": "development",
+                "order": 2
+            }
+        },
+        {
+            "name": "movie service - prod",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "app.main:app",
+                "--host",
+                "${API_HOST}",
+                "--port",
+                "${API_PORT}"
+            ],
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}",
+            "envFile": "${workspaceFolder}/.env/prod.env",
+            "justMyCode": true,
+            "presentation": {
+                "hidden": false,
+                "group": "production",
+                "order": 2
             }
         }
     ]
