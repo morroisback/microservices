@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "movie service - dev",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}/python_microservices/movie_service/",
+            "envFile": "${workspaceFolder}/python_microservices/movie_service/.env/dev.env",
+            "jinja": true,
+            "justMyCode": true,
+            "presentation": {
+                "hidden": false,
+                "group": "api",
+                "order": 3
+            },
+            "autoReload": {
+                "enable": true
+            }
+        },
+        {
+            "name": "FastAPI - movie",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}/python_microservices/movie_service/",
+            "envFile": "${workspaceFolder}/python_microservices/movie_service/.env/prod.env",
+            "args": [
+                "app.main:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "80"
+            ],
+            "jinja": true,
+            "justMyCode": true,
+            "presentation": {
+                "hidden": false,
+                "group": "api",
+                "order": 4
+            }
+        }
+    ]
+}

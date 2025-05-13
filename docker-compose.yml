@@ -1,0 +1,112 @@
+version: "3.8"
+
+services:
+  movie_service:
+    container_name: movie_service
+    build: 
+      context: movie_service
+      dockerfile: Dockerfile
+    command: /app/start_service.sh
+    # command: uvicorn app.main:app --reload --host 0.0.0.0 --port 80
+    env_file:
+      - movie_service/.env/dev.env
+    ports:
+      - 8080:8000
+      - 8082:80
+    volumes:
+      - ./movie_service/:/app/
+    healthcheck:
+      test: ["CMD-SHELL", "/app/healthcheck_api.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      movie_db: 
+        condition: service_healthy
+      cast_service:
+        condition: service_healthy
+    networks:
+      - microservices_network
+      
+  movie_db:
+    container_name: movie_db
+    image: postgres:17.5-alpine
+    env_file:
+      - ./movie_service/.env/dev.env
+    volumes:
+      - movie_pgdata:/var/lib/postgresql/data/
+      - ./movie_service/healthcheck_db.sh:/healthcheck_db.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "/healthcheck_db.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - microservices_network
+
+  cast_service:
+    container_name: cast_service
+    build: 
+      context: cast_service
+      dockerfile: Dockerfile
+    command: /app/start_service.sh
+    env_file:
+      - ./cast_service/.env/dev.env
+    ports:
+      - 8081:8000
+    volumes:
+      - ./cast_service/:/app/
+    healthcheck:
+      test: ["CMD-SHELL", "/app/healthcheck_api.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      cast_db: 
+        condition: service_healthy
+    networks:
+      - microservices_network
+
+  cast_db:
+    container_name: cast_db
+    image: postgres:17.5-alpine
+    env_file:
+      - ./cast_service/.env/dev.env
+    volumes:
+      - cast_pgdata:/var/lib/postgresql/data/
+      - ./cast_service/healthcheck_db.sh:/healthcheck_db.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "/healthcheck_db.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - microservices_network
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    volumes:
+      - ./nginx_config.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+    healthcheck:
+      test: ["CMD-SHELL", "service nginx status || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      cast_service: 
+        condition: service_healthy
+      movie_service: 
+        condition: service_healthy
+    networks:
+      - microservices_network
+
+volumes:
+  movie_pgdata:
+  cast_pgdata:
+
+networks:
+  microservices_network:
+    driver: bridge
