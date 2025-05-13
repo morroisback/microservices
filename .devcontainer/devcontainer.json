@@ -1,8 +1,8 @@
 {
     "name": "microservices",
-    "dockerComposeFile": "../microservices/docker-compose.yml",
+    "dockerComposeFile": "../docker-compose.yml",
     "service": "movie_service",
-    "workspaceFolder": "/app",
+    "workspaceFolder": "/app/",
     // "build": {
     //     "dockerfile": "Dockerfile",
     //     "context": ".."
