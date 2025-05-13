@@ -14,7 +14,7 @@ async def create_cast(payload: CastIn) -> dict:
 
 
 @casts.get("/", response_model=list[CastOut])
-async def get_movies() -> list[dict]:
+async def get_casts() -> list[dict]:
     return await db_manager.get_all_casts()
 
 

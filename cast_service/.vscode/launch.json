@@ -2,49 +2,51 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "cast service - dev",
+            "name": "cast service - local",
             "type": "debugpy",
             "request": "launch",
             "module": "uvicorn",
             "args": [
                 "app.main:app",
                 "--host",
-                "${API_HOST}",
+                "127.0.0.1",
                 "--port",
-                "${API_PORT}",
+                "8081",
                 "--reload"
             ],
             "console": "integratedTerminal",
             "python": "${workspaceFolder}/.venv/bin/python",
             "cwd": "${workspaceFolder}",
             "envFile": "${workspaceFolder}/.env/dev.env",
+            "env": {
+                "DB_HOST": "localhost",
+                "DB_PORT": "5433"
+            },
             "justMyCode": true,
             "presentation": {
                 "hidden": false,
-                "group": "development",
+                "group": "local",
                 "order": 1
             }
         },
         {
-            "name": "cast service - prod",
+            "name": "cast service - remote",
             "type": "debugpy",
-            "request": "launch",
-            "module": "uvicorn",
-            "args": [
-                "app.main:app",
-                "--host",
-                "${API_HOST}",
-                "--port",
-                "${API_PORT}"
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": "7001"
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/app/"
+                }
             ],
-            "console": "integratedTerminal",
-            "python": "${workspaceFolder}/.venv/bin/python",
-            "cwd": "${workspaceFolder}",
-            "envFile": "${workspaceFolder}/.env/prod.env",
-            "justMyCode": true,
+            "justMyCode": false,
             "presentation": {
                 "hidden": false,
-                "group": "production",
+                "group": "remote",
                 "order": 1
             }
         }

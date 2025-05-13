@@ -11,12 +11,13 @@ services:
     env_file:
       - movie_service/.env/prod.env
     ports:
-      - 8080:8000
-      - 8082:80
+      - 7002:7000
+      - 8082:8000
+      # - 8080:80
     volumes:
       - ./movie_service/:/app/
     healthcheck:
-      test: ["CMD-SHELL", "healthcheck_api.sh"]
+      test: ["CMD-SHELL", "/app/healthcheck_api.sh"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -29,7 +30,7 @@ services:
       - microservices_network
       
   movie_db_service:
-    container_name: movie_db
+    container_name: movie_db_service
     image: postgres:17.5-alpine
     env_file:
       - ./movie_service/.env/prod.env
@@ -53,13 +54,14 @@ services:
       dockerfile: Dockerfile
     command: /app/start_service.sh
     env_file:
-      - ./cast_service/.env/prod.env
+      - ./cast_service/.env/dev.env
     ports:
+      - 7001:7000
       - 8081:8000
     volumes:
       - ./cast_service/:/app/
     healthcheck:
-      test: ["CMD-SHELL", "healthcheck_api.sh"]
+      test: ["CMD-SHELL", "/app/healthcheck_api.sh"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -70,7 +72,7 @@ services:
       - microservices_network
 
   cast_db_service:
-    container_name: cast_db
+    container_name: cast_db_service
     image: postgres:17.5-alpine
     env_file:
       - ./cast_service/.env/prod.env
