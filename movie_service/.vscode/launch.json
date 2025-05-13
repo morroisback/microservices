@@ -20,7 +20,8 @@
             "envFile": "${workspaceFolder}/.env/dev.env",
             "env": {
                 "DB_HOST": "localhost",
-                "DB_PORT": "5434"
+                "DB_PORT": "5434",
+                "CAST_SERVICE_HOST_URL": "http://localhost:8081/api/v1/casts/"
             },
             "justMyCode": true,
             "presentation": {
