@@ -12,9 +12,9 @@ services:
     ports:
       - 7002:7000
       - 8082:8000
-      - 8080:80
+      - 8084:8001  # for dev container
     volumes:
-      - ./movie_service/:/workspace/
+      - ./movie_service/:/workspace/  # for dev container
     healthcheck:
       test: ["CMD-SHELL", "/workspace/healthcheck_api.sh"]
       interval: 10s
@@ -57,9 +57,9 @@ services:
     ports:
       - 7001:7000
       - 8081:8000
-      # - 8080:80
-    # volumes:
-    #   - ./cast_service/:/workspace/
+      - 8083:8001  # for dev container
+    volumes:
+      - ./cast_service/:/workspace/  # for dev container
     healthcheck:
       test: ["CMD-SHELL", "/workspace/healthcheck_api.sh"]
       interval: 10s

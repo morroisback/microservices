@@ -20,9 +20,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     await database.disconnect()
 
 
-app = FastAPI(
-    lifespan=lifespan, openapi_url="/api/v1/movies/openapi.json", docs_url="/api/v1/movies/docs"
-)
+app = FastAPI(lifespan=lifespan, openapi_url="/api/v1/movies/openapi.json", docs_url="/api/v1/movies/docs")
 
 app.include_router(movies, prefix="/api/v1/movies", tags=["movies"])
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -32,6 +30,4 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def favicon() -> FileResponse:
     file_name = "favicon.gif"
     file_path = os.path.join(app.root_path, "static", file_name)
-    return FileResponse(
-        path=file_path, headers={"Content-Disposition": "attachment; filename=" + file_name}
-    )
+    return FileResponse(path=file_path, headers={"Content-Disposition": "attachment; filename=" + file_name})

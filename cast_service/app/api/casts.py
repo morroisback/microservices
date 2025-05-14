@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 
 from app.api import db_manager
-from app.api.models import CastIn, CastOut, CastUpdate
+from app.api.models import CastIn, CastOut
 
 
 casts = APIRouter()
@@ -22,5 +22,5 @@ async def get_casts() -> list[dict]:
 async def get_cast(id: int) -> dict:
     cast = await db_manager.get_cast(id)
     if not cast:
-        raise HTTPException(status_code=404, detail=f"Cast not found")
+        raise HTTPException(status_code=404, detail="Cast not found")
     return cast

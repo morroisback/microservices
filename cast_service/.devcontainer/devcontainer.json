@@ -1,12 +1,8 @@
 {
-    "name": "movie_service",
-    "dockerComposeFile": "../docker-compose.yml",
-    "service": "movie_service",
-    "workspaceFolder": "/workspace/movie_service.code-workspace",
-    // "build": {
-    //     "dockerfile": "Dockerfile",
-    //     "context": ".."
-    // },
+    "name": "cast_container",
+    "dockerComposeFile": "../../docker-compose.yml",
+    "service": "cast_service",
+    "workspaceFolder": "/workspace",
     "remoteUser": "root",
     "customizations": {
         "vscode": {

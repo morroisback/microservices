@@ -1,0 +1,45 @@
+{
+    "name": "movie_container",
+    "dockerComposeFile": "../../docker-compose.yml",
+    "service": "movie_service",
+    "workspaceFolder": "/workspace",
+    "remoteUser": "root",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "charliermarsh.ruff",
+                "docker.docker",
+                "github.copilot",
+                "github.copilot-chat",
+                "ibm.output-colorizer",
+                "ms-azuretools.vscode-docker",
+                "ms-ceintl.vscode-language-pack-ru",
+                "ms-python.debugpy",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.jupyter-keymap",
+                "ms-toolsai.jupyter-renderers",
+                "ms-toolsai.vscode-jupyter-cell-tags",
+                "ms-toolsai.vscode-jupyter-slideshow",
+                "ms-vscode-remote.remote-containers",
+                "ms-vscode-remote.remote-ssh",
+                "ms-vscode-remote.remote-ssh-edit",
+                "ms-vscode-remote.remote-wsl",
+                "ms-vscode-remote.vscode-remote-extensionpack",
+                "ms-vscode.remote-explorer",
+                "ms-vscode.remote-server",
+                "njpwerner.autodocstring",
+                "rangav.vscode-thunder-client",
+                "streetsidesoftware.code-spell-checker",
+                "streetsidesoftware.code-spell-checker-russian",
+                "tamasfe.even-better-toml"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "charliermarsh.ruff",
+                "ruff.lineLength": 120
+            }
+        }
+    }
+}
