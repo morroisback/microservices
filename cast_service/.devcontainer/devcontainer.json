@@ -2,6 +2,10 @@
     "name": "cast_container",
     "dockerComposeFile": "../../docker-compose.yml",
     "service": "cast_service",
+    // "build": {
+    //     "dockerfile": "Dockerfile",
+    //     "context": ".."
+    // },
     "workspaceFolder": "/workspace",
     "remoteUser": "root",
     "customizations": {

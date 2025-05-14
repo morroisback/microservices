@@ -10,7 +10,7 @@ services:
     env_file:
       - movie_service/.env/dev.env
     ports:
-      - 7002:7000
+      - 7002:7000  # for remote debug
       - 8082:8000
       - 8084:8001  # for dev container
     volumes:
@@ -55,7 +55,7 @@ services:
     env_file:
       - ./cast_service/.env/dev.env
     ports:
-      - 7001:7000
+      - 7001:7000  # for remote debug
       - 8081:8000
       - 8083:8001  # for dev container
     volumes:

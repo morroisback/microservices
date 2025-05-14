@@ -2,6 +2,10 @@
     "name": "movie_container",
     "dockerComposeFile": "../../docker-compose.yml",
     "service": "movie_service",
+    // "build": {
+    //     "dockerfile": "Dockerfile",
+    //     "context": ".."
+    // },
     "workspaceFolder": "/workspace",
     "remoteUser": "root",
     "customizations": {
