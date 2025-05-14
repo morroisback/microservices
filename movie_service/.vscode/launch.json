@@ -15,9 +15,9 @@
                 "--reload"
             ],
             "console": "integratedTerminal",
-            "python": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/movie_service}/.venv/bin/python",
-            "cwd": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/movie_service",
-            "envFile": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/movie_service/.env/dev.env",
+            "python": "${workspaceFolder:movie_service}/.venv/bin/python",
+            "cwd": "${workspaceFolder:movie_service}",
+            "envFile": "${workspaceFolder:movie_service}/.env/dev.env",
             "env": {
                 "DB_HOST": "localhost",
                 "DB_PORT": "5434",
@@ -31,6 +31,29 @@
             }
         },
         {
+            "name": "movie service - container",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "app.main:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "80",
+                "--reload"
+            ],
+            "console": "integratedTerminal",
+            "python": "/usr/local/bin/python",
+            "cwd": "${workspaceFolder:movie_service}",
+            "justMyCode": true,
+            "presentation": {
+                "hidden": false,
+                "group": "container",
+                "order": 2
+            }
+        },
+        {
             "name": "movie service - remote",
             "type": "debugpy",
             "request": "attach",
@@ -40,7 +63,7 @@
             },
             "pathMappings": [
                 {
-                    "localRoot": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/movie_service",
+                    "localRoot": "${workspaceFolder:movie_service}",
                     "remoteRoot": "/app/"
                 }
             ],

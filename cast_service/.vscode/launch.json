@@ -15,9 +15,9 @@
                 "--reload"
             ],
             "console": "integratedTerminal",
-            "python": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/cast_service/.venv/bin/python",
-            "cwd": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/cast_service",
-            "envFile": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/cast_service/.env/dev.env",
+            "python": "${workspaceFolder:cast_service}/.venv/bin/python",
+            "cwd": "${workspaceFolder:cast_service}",
+            "envFile": "${workspaceFolder:cast_service}/.env/dev.env",
             "env": {
                 "DB_HOST": "localhost",
                 "DB_PORT": "5433"
@@ -30,6 +30,29 @@
             }
         },
         {
+            "name": "cast service - container",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "app.main:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "80",
+                "--reload"
+            ],
+            "console": "integratedTerminal",
+            "python": "/usr/local/bin/python",
+            "cwd": "${workspaceFolder:cast_service}",
+            "justMyCode": true,
+            "presentation": {
+                "hidden": false,
+                "group": "container",
+                "order": 2
+            }
+        },
+        {
             "name": "cast service - remote",
             "type": "debugpy",
             "request": "attach",
@@ -39,7 +62,7 @@
             },
             "pathMappings": [
                 {
-                    "localRoot": "/Users/nikita/VSCodeProjects/PythonProjects/microservices/cast_service",
+                    "localRoot": "${workspaceFolder:cast_service}",
                     "remoteRoot": "/app/"
                 }
             ],

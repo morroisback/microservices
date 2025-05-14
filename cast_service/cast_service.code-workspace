@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": ".",
+            "name": "cast_service"
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/.DS_Store": true
+        },
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "ruff.lineLength": 120
+    }
+}

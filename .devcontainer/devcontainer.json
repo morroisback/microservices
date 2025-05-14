@@ -1,8 +1,8 @@
 {
-    "name": "microservices",
+    "name": "movie_service",
     "dockerComposeFile": "../docker-compose.yml",
     "service": "movie_service",
-    "workspaceFolder": "/app/",
+    "workspaceFolder": "/workspace/movie_service.code-workspace",
     // "build": {
     //     "dockerfile": "Dockerfile",
     //     "context": ".."
@@ -40,8 +40,6 @@
                 "tamasfe.even-better-toml"
             ],
             "settings": {
-                "terminal.integrated.defaultProfile.linux": "bash",
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
                 "editor.formatOnSave": true,
                 "editor.defaultFormatter": "charliermarsh.ruff",
                 "ruff.lineLength": 120

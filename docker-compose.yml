@@ -6,8 +6,7 @@ services:
     build: 
       context: movie_service
       dockerfile: Dockerfile
-    command: /app/start_service.sh
-    # command: uvicorn app.main:app --reload --host 0.0.0.0 --port 80
+    command: /workspace/start_service.sh
     env_file:
       - movie_service/.env/dev.env
     ports:
@@ -15,9 +14,9 @@ services:
       - 8082:8000
       - 8080:80
     volumes:
-      - ./movie_service/:/app/
+      - ./movie_service/:/workspace/
     healthcheck:
-      test: ["CMD-SHELL", "/app/healthcheck_api.sh"]
+      test: ["CMD-SHELL", "/workspace/healthcheck_api.sh"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -52,16 +51,17 @@ services:
     build: 
       context: cast_service
       dockerfile: Dockerfile
-    command: /app/start_service.sh
+    command: /workspace/start_service.sh
     env_file:
       - ./cast_service/.env/prod.env
     ports:
       - 7001:7000
       - 8081:8000
-    volumes:
-      - ./cast_service/:/app/
+      # - 8080:80
+    # volumes:
+    #   - ./cast_service/:/workspace/
     healthcheck:
-      test: ["CMD-SHELL", "/app/healthcheck_api.sh"]
+      test: ["CMD-SHELL", "/workspace/healthcheck_api.sh"]
       interval: 10s
       timeout: 5s
       retries: 5
